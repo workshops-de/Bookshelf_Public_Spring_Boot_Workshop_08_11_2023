@@ -1,0 +1,17 @@
+application:
+  title: '@project.name@'
+  version: '@project.version@'
+bookshelf:
+  capacity: 1000
+  name: My Bookshelf
+  version: 0.0.1
+  description: This is my private Bookshelf
+  license:
+    name: MIT License
+    url: https://opensource.org/licenses/MIT
+
+server:
+  port: ${SERVER.PORT:8080}
+springdoc:
+  api-docs:
+    enabled: false
