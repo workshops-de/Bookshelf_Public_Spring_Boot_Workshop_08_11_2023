@@ -10,24 +10,29 @@ import java.io.IOException;
 import java.util.List;
 
 @Repository
-public class BookRepository {
+class BookRepository {
     private final ObjectMapper mapper;
     private final ResourceLoader resourceLoader;
 
     private List<Book> books;
 
-    public BookRepository(ObjectMapper mapper, ResourceLoader resourceLoader) {
+    BookRepository(ObjectMapper mapper, ResourceLoader resourceLoader) {
         this.mapper = mapper;
         this.resourceLoader = resourceLoader;
     }
 
     @PostConstruct
-    public void init() throws IOException {
+    void init() throws IOException {
         final var resource = resourceLoader.getResource("classpath:books.json");
         this.books = mapper.readValue(resource.getInputStream(), new TypeReference<>() {});
     }
 
     List<Book> findAllBooks() {
         return books;
+    }
+
+    public Book addBook(Book book) {
+        books.add(book);
+        return book;
     }
 }

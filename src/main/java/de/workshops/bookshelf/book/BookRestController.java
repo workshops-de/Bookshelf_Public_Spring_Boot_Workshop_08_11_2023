@@ -56,6 +56,11 @@ public class BookRestController {
         return service.searchBooks(searchRequest);
     }
 
+    @PostMapping
+    Book createBook(@RequestBody Book aNewBook) {
+        return service.createBook(aNewBook);
+    }
+
     @ExceptionHandler(ConstraintViolationException.class)
     public ProblemDetail error(ConstraintViolationException ex) {
         ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, ex.getMessage());

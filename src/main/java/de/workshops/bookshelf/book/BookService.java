@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class BookService {
+class BookService {
     private final BookRepository repository;
 
     public BookService(BookRepository repository) {
@@ -35,4 +35,7 @@ public class BookService {
                 .toList();
     }
 
+    public Book createBook(Book book) {
+        return repository.addBook(book);
+    }
 }
