@@ -2,16 +2,35 @@ application:
   title: '@project.name@'
   version: '@project.version@'
 bookshelf:
-  capacity: 1000
   name: My Bookshelf
   version: 0.0.1
   description: This is my private Bookshelf
   license:
     name: MIT License
     url: https://opensource.org/licenses/MIT
+  capacity: 1000
 
 server:
   port: ${SERVER.PORT:8080}
 springdoc:
   api-docs:
     enabled: false
+
+spring:
+  datasource:
+    url: jdbc:postgresql://roasted-tomato.db.elephantsql.com/db_trainer
+    driver-class-name: org.postgresql.Driver
+    username: trainer
+    password: pwTrainer
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+  h2:
+    console:
+      enabled: true
+  sql:
+    init:
+      mode: always
+
